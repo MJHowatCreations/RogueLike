@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null; //Static instance of GameManager which allows it to be accessed by any other script
     public BoardManager boardScript; //Store a reference to our BoardManager which will set up the level.
+    public int playerFoodPoints = 100;
+    [HideInInspector] public bool playersTurn = true;
+
 
     private int level = 3;  //Current level number, expressed in game as "Day 1".
 
@@ -30,7 +33,10 @@ public class GameManager : MonoBehaviour {
     void InitGame () {
         boardScript.SetupScene(level);  //Call the SetupScene function of the BoardManager script, pass it current level number.
     }
-	
+	public void GameOver()
+    {
+        enabled = false;
+    }
 	// Update is called once per frame
 	void Update () {
 		
